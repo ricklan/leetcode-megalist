@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 
-const CheckboxComponent = (index) => {
-  const indexValue = index["index"];
+const CheckboxComponent = (question) => {
+  const question_name = question["question"];
   const [checked, setChecked] = useState(
-    localStorage.getItem(indexValue) === "true"
+    localStorage.getItem(question_name) === "true"
   );
 
-  const handleClick = (indexValue) => {
-    setChecked(!checked);
-    if (localStorage.getItem(indexValue) === "true") {
-      localStorage.setItem(indexValue, false);
+  const handleClick = (question_name) => {
+    if (localStorage.getItem(question_name) === "true") {
+      localStorage.setItem(question_name, false);
+      setChecked(false);
     } else {
-      localStorage.setItem(indexValue, true);
+      localStorage.setItem(question_name, true);
+      setChecked(true);
     }
   };
 
-  return <Checkbox checked={checked} onClick={() => handleClick(indexValue)} />;
+  return (
+    <Checkbox checked={checked} onClick={() => handleClick(question_name)} />
+  );
 };
 
 export default CheckboxComponent;
