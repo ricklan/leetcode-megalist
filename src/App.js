@@ -1510,30 +1510,41 @@ function App() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell align="center" width={"20%"}>
-                  Completed
+                <TableCell align="center" width={"30%"}>
+                  <b className="category-title">Completed</b>
                 </TableCell>
-                <TableCell align="center" width={"50%"}>
-                  Question
+                <TableCell align="left" width={"40%"}>
+                  <b className="category-title">Question</b>
                 </TableCell>
                 <TableCell align="center" width={"30%"}>
-                  Difficulty
+                  <b className="category-title">Difficulty</b>
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {questionsList.map((question, index) => (
+              {questionsList.map((question) => (
                 <TableRow key={question.question}>
                   <TableCell align="center">
                     <CheckboxComponent question={question.question} />
                   </TableCell>
-                  <TableCell>
-                    <a href={question.link} target={"_blank"}>
+                  <TableCell align="left">
+                    <a
+                      href={question.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="question-link"
+                    >
                       {question.question}
                     </a>
                   </TableCell>
                   <TableCell align="center">
-                    {difficultyMapping[question.difficulty]}
+                    <p
+                      className={`difficulty-tag ${
+                        difficultyMapping[question.difficulty]
+                      }`}
+                    >
+                      {difficultyMapping[question.difficulty]}
+                    </p>
                   </TableCell>
                 </TableRow>
               ))}

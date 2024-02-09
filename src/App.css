@@ -28,6 +28,46 @@
   color: #61dafb;
 }
 
+.category-title {
+  color: white;
+  font-size: 20px;
+}
+
+.question-link {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none; 
+}
+
+.question-link:visited {
+  text-decoration: none; 
+}
+
+.question-link:hover {
+  font-style: italic;
+  color: #7CB9E8;
+  cursor: pointer;
+}
+
+.difficulty-tag {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.Easy {
+  color: #00ad5f;
+}
+
+.Medium {
+  color: yellow;
+}
+
+.Hard {
+  color: #ee2f56;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -42,7 +82,7 @@ body {
 }
 
 .page {
-  margin: 0  80px;
+  margin: 0  50px;
 }
 
 h1 {
