@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
+import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const CheckboxComponent = (question) => {
   const question_name = question["question"];
@@ -18,7 +20,13 @@ const CheckboxComponent = (question) => {
   };
 
   return (
-    <Checkbox checked={checked} onClick={() => handleClick(question_name)} />
+    <Checkbox 
+      checked={checked} 
+      onClick={() => handleClick(question_name)} 
+      icon={<CheckCircleOutlineOutlinedIcon/>} 
+      checkedIcon={<CheckCircleIcon/>}
+      sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+    />
   );
 };
 

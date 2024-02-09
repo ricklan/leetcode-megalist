@@ -12,8 +12,15 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
-import RefreshIcon from "@mui/icons-material/Refresh";
+import ReplayIcon from "@mui/icons-material/Replay";
 import CheckboxComponent from "./Checkbox";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 let questions = [
   {
@@ -1442,83 +1449,99 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Leetcode Megalist</h1>
-      <div>
-        <Box>
-          <FormControl fullWidth>
-            <InputLabel>List</InputLabel>
-            <Select value={list} label="List" onChange={handleListFilterChange}>
-              <MenuItem value={"all"}>All</MenuItem>
-              <MenuItem value={"blind75"}>Blind75</MenuItem>
-              <MenuItem value={"grind75"}>Grind75</MenuItem>
-              <MenuItem value={"neetcode150"}>Neetcode150</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
+    <ThemeProvider theme={darkTheme}>
+      <div className="page">
+        <div className="filters-container">
+          <h1>Leetcode Megalist</h1>
+          <div className="filters">
+            <Box className="dropdown">
+              <FormControl fullWidth size="small">
+                <InputLabel>List</InputLabel>
+                <Select
+                  value={list}
+                  label="List"
+                  onChange={handleListFilterChange}
+                >
+                  <MenuItem value={"all"}>All</MenuItem>
+                  <MenuItem value={"blind75"}>Blind75</MenuItem>
+                  <MenuItem value={"grind75"}>Grind75</MenuItem>
+                  <MenuItem value={"neetcode150"}>Neetcode150</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
 
-        <Box>
-          <FormControl fullWidth>
-            <InputLabel>Difficulty</InputLabel>
-            <Select
-              value={difficulty}
-              label="Difficulty"
-              onChange={handleDifficultyChange}
-            >
-              <MenuItem value={"all"}>All</MenuItem>
-              <MenuItem value={"E"}>Easy</MenuItem>
-              <MenuItem value={"M"}>Medium</MenuItem>
-              <MenuItem value={"H"}>Hard</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
+            <Box className="dropdown">
+              <FormControl fullWidth size="small">
+                <InputLabel>Difficulty</InputLabel>
+                <Select
+                  value={difficulty}
+                  label="Difficulty"
+                  onChange={handleDifficultyChange}
+                >
+                  <MenuItem value={"all"}>All</MenuItem>
+                  <MenuItem value={"E"}>Easy</MenuItem>
+                  <MenuItem value={"M"}>Medium</MenuItem>
+                  <MenuItem value={"H"}>Hard</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
 
-        <Box>
-          <FormControl fullWidth>
-            <InputLabel>Completed</InputLabel>
-            <Select
-              value={completed}
-              label="Completed"
-              onChange={handleCompletedChange}
-            >
-              <MenuItem value={"all"}>All</MenuItem>
-              <MenuItem value={"C"}>Complete</MenuItem>
-              <MenuItem value={"I"}>Incomplete</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
+            <Box className="dropdown">
+              <FormControl fullWidth size="small">
+                <InputLabel>Completed</InputLabel>
+                <Select
+                  value={completed}
+                  label="Completed"
+                  onChange={handleCompletedChange}
+                >
+                  <MenuItem value={"all"}>All</MenuItem>
+                  <MenuItem value={"C"}>Complete</MenuItem>
+                  <MenuItem value={"I"}>Incomplete</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
 
-        <Button variant="contained" onClick={resetFilters}>
-          <RefreshIcon />
-        </Button>
-      </div>
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Completed</TableCell>
-              <TableCell>Question</TableCell>
-              <TableCell>Difficulty</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {questionsList.map((question, index) => (
-              <TableRow key={question.question}>
-                <TableCell>
-                  <CheckboxComponent question={question.question} />
+            <Button variant="contained" onClick={resetFilters}>
+              <ReplayIcon />
+            </Button>
+          </div>
+        </div>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell align="center" width={"20%"}>
+                  Completed
                 </TableCell>
-                <TableCell>
-                  <a href={question.link} target={"_blank"}>
-                    {question.question}
-                  </a>
+                <TableCell align="center" width={"50%"}>
+                  Question
                 </TableCell>
-                <TableCell>{difficultyMapping[question.difficulty]}</TableCell>
+                <TableCell align="center" width={"30%"}>
+                  Difficulty
+                </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
+            </TableHead>
+            <TableBody>
+              {questionsList.map((question, index) => (
+                <TableRow key={question.question}>
+                  <TableCell align="center">
+                    <CheckboxComponent question={question.question} />
+                  </TableCell>
+                  <TableCell>
+                    <a href={question.link} target={"_blank"}>
+                      {question.question}
+                    </a>
+                  </TableCell>
+                  <TableCell align="center">
+                    {difficultyMapping[question.difficulty]}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+    </ThemeProvider>
   );
 }
 
