@@ -12,6 +12,7 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import ReplayIcon from "@mui/icons-material/Replay";
 import CheckboxComponent from "./Checkbox";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -1383,6 +1384,7 @@ const difficultyMapping = {
 
 function App() {
   const [list, setList] = useState("all");
+  const [search, setSearch] = useState("");
   const [difficulty, setDifficulty] = useState("all");
   const [completed, setCompleted] = useState("all");
   const [questionsList, setQuestionsList] = useState(questions);
@@ -1426,8 +1428,14 @@ function App() {
       );
     }
 
+    if (search.length > 0) {
+      filteredQuestionsList = filteredQuestionsList.filter((question) =>
+        question.question.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+
     setQuestionsList(filteredQuestionsList);
-  }, [list, difficulty, completed]);
+  }, [list, difficulty, completed, search]);
 
   const handleListFilterChange = (event) => {
     setList(event.target.value);
@@ -1441,10 +1449,15 @@ function App() {
     setCompleted(event.target.value);
   };
 
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+
   const resetFilters = () => {
     setList("all");
     setDifficulty("all");
     setCompleted("all");
+    setSearch("");
     setQuestionsList(questions);
   };
 
@@ -1454,6 +1467,18 @@ function App() {
         <div className="filters-container">
           <h1>Leetcode Megalist</h1>
           <div className="filters">
+            <Box className="search">
+              <TextField
+                id="outlined-basic"
+                label="Search Question"
+                variant="outlined"
+                margin="none"
+                size="small"
+                value={search}
+                onChange={handleSearch}
+              />
+            </Box>
+
             <Box className="dropdown">
               <FormControl fullWidth size="small">
                 <InputLabel>List</InputLabel>
