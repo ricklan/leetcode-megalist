@@ -16,6 +16,7 @@ import TextField from "@mui/material/TextField";
 import ReplayIcon from "@mui/icons-material/Replay";
 import CheckboxComponent from "./Checkbox";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import SearchIcon from "@mui/icons-material/Search";
 
 const darkTheme = createTheme({
   palette: {
@@ -1468,6 +1469,7 @@ function App() {
           <h1>Leetcode Megalist</h1>
           <div className="filters">
             <Box className="search">
+              <SearchIcon className="search-icon" color="primary" />
               <TextField
                 id="outlined-basic"
                 label="Search Question"
@@ -1476,59 +1478,62 @@ function App() {
                 size="small"
                 value={search}
                 onChange={handleSearch}
+                fullWidth
               />
             </Box>
 
-            <Box className="dropdown">
-              <FormControl fullWidth size="small">
-                <InputLabel>List</InputLabel>
-                <Select
-                  value={list}
-                  label="List"
-                  onChange={handleListFilterChange}
-                >
-                  <MenuItem value={"all"}>All</MenuItem>
-                  <MenuItem value={"blind75"}>Blind75</MenuItem>
-                  <MenuItem value={"grind75"}>Grind75</MenuItem>
-                  <MenuItem value={"neetcode150"}>Neetcode150</MenuItem>
-                </Select>
-              </FormControl>
-            </Box>
+            <div className="dropdown-container">
+              <Box className="dropdown">
+                <FormControl fullWidth size="small">
+                  <InputLabel>List</InputLabel>
+                  <Select
+                    value={list}
+                    label="List"
+                    onChange={handleListFilterChange}
+                  >
+                    <MenuItem value={"all"}>All</MenuItem>
+                    <MenuItem value={"blind75"}>Blind75</MenuItem>
+                    <MenuItem value={"grind75"}>Grind75</MenuItem>
+                    <MenuItem value={"neetcode150"}>Neetcode150</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
 
-            <Box className="dropdown">
-              <FormControl fullWidth size="small">
-                <InputLabel>Difficulty</InputLabel>
-                <Select
-                  value={difficulty}
-                  label="Difficulty"
-                  onChange={handleDifficultyChange}
-                >
-                  <MenuItem value={"all"}>All</MenuItem>
-                  <MenuItem value={"E"}>Easy</MenuItem>
-                  <MenuItem value={"M"}>Medium</MenuItem>
-                  <MenuItem value={"H"}>Hard</MenuItem>
-                </Select>
-              </FormControl>
-            </Box>
+              <Box className="dropdown">
+                <FormControl fullWidth size="small">
+                  <InputLabel>Difficulty</InputLabel>
+                  <Select
+                    value={difficulty}
+                    label="Difficulty"
+                    onChange={handleDifficultyChange}
+                  >
+                    <MenuItem value={"all"}>All</MenuItem>
+                    <MenuItem value={"E"}>Easy</MenuItem>
+                    <MenuItem value={"M"}>Medium</MenuItem>
+                    <MenuItem value={"H"}>Hard</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
 
-            <Box className="dropdown">
-              <FormControl fullWidth size="small">
-                <InputLabel>Completed</InputLabel>
-                <Select
-                  value={completed}
-                  label="Completed"
-                  onChange={handleCompletedChange}
-                >
-                  <MenuItem value={"all"}>All</MenuItem>
-                  <MenuItem value={"C"}>Complete</MenuItem>
-                  <MenuItem value={"I"}>Incomplete</MenuItem>
-                </Select>
-              </FormControl>
-            </Box>
+              <Box className="dropdown">
+                <FormControl fullWidth size="small">
+                  <InputLabel>Completed</InputLabel>
+                  <Select
+                    value={completed}
+                    label="Completed"
+                    onChange={handleCompletedChange}
+                  >
+                    <MenuItem value={"all"}>All</MenuItem>
+                    <MenuItem value={"C"}>Complete</MenuItem>
+                    <MenuItem value={"I"}>Incomplete</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
 
-            <Button variant="contained" onClick={resetFilters}>
-              <ReplayIcon />
-            </Button>
+              <Button variant="contained" onClick={resetFilters}>
+                <ReplayIcon />
+              </Button>
+            </div>
           </div>
         </div>
         <TableContainer>
@@ -1536,13 +1541,13 @@ function App() {
             <TableHead>
               <TableRow>
                 <TableCell align="center" width={"30%"}>
-                  <b className="category-title">Completed</b>
+                  <span className="category-title">Completed</span>
                 </TableCell>
                 <TableCell align="left" width={"40%"}>
-                  <b className="category-title">Question</b>
+                  <span className="category-title">Question</span>
                 </TableCell>
                 <TableCell align="center" width={"30%"}>
-                  <b className="category-title">Difficulty</b>
+                  <span className="category-title">Difficulty</span>
                 </TableCell>
               </TableRow>
             </TableHead>

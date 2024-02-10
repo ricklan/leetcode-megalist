@@ -31,6 +31,7 @@
 .category-title {
   color: white;
   font-size: 20px;
+  font-weight: 300;
 }
 
 .question-link {
@@ -45,7 +46,6 @@
 }
 
 .question-link:hover {
-  font-style: italic;
   color: #7CB9E8;
   cursor: pointer;
 }
@@ -79,10 +79,11 @@
 
 body {
   background-color: #282c34;
+  margin: 0;
 }
 
 .page {
-  margin: 0  50px;
+  margin: 0  10vw;
 }
 
 h1 {
@@ -107,9 +108,41 @@ h1 {
   justify-content: space-evenly;
 }
 
-.dropdown, .search {
-  width: 250px;
+.dropdown-container {
+  display: flex;
+  align-self: flex-end;
+}
+
+.dropdown {
+  width: 15vw;
   margin-right: 15px;
+}
+
+.search {
+  width: 80%;
+  margin-right: 4vw;
+  justify-self: center;
+}
+
+.search-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px !important;
+  margin-left: 10px;
+}
+
+#outlined-basic-label {
+  padding-left: 30px;
+}
+
+#outlined-basic-label.Mui-focused {
+  padding-left: 0;
+}
+
+#outlined-basic {
+  padding-left: 40px;
 }
 
 /*Table styles*/
@@ -125,9 +158,9 @@ th {
 tr th:nth-child(1)::after {
   content: '';
   position: absolute;
-  left: -90px;
-  top: 56px;
-  width: 100vw;
+  left: -999px;
+  top: 59px;
+  width: 999vw;
   border-bottom: 1px solid rgb(22, 22, 22);
   filter: drop-shadow(0px 2px 3px #141414);
 }
