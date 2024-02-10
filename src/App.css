@@ -35,7 +35,7 @@
 }
 
 .question-link {
-  color: white;
+  color: #7CB9E8;
   font-size: 16px;
   font-weight: bold;
   text-decoration: none; 
@@ -46,7 +46,7 @@
 }
 
 .question-link:hover {
-  color: #7CB9E8;
+  color: white;
   cursor: pointer;
 }
 
@@ -57,15 +57,15 @@
 }
 
 .Easy {
-  color: #00ad5f;
+  color: #006400;
 }
 
 .Medium {
-  color: yellow;
+  color: #8B8000;
 }
 
 .Hard {
-  color: #ee2f56;
+  color: #cc0000;
 }
 
 @keyframes App-logo-spin {
