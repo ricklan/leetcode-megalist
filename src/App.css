@@ -34,11 +34,24 @@
   font-weight: 300;
 }
 
+.question-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
 .question-link {
   color: #7CB9E8;
   font-size: 16px;
   font-weight: bold;
-  text-decoration: none; 
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.lock-icon {
+  color: #aa8017;
+  position: relative;
 }
 
 .question-link:visited {
@@ -150,19 +163,17 @@ th {
   position: sticky;
   top: 114px;
   text-align: center;
-
   background: #282c34;
   z-index: 999;
 }
 
-tr th:nth-child(1)::after {
+tr th:nth-child(-n + 3)::after {
   content: '';
   position: absolute;
-  left: -999px;
+  left: 0px;
   top: 59px;
-  width: 999vw;
-  border-bottom: 1px solid rgb(22, 22, 22);
-  filter: drop-shadow(0px 2px 3px #141414);
+  width: 100%;
+  border-bottom: 1px solid white !important;
 }
 
 .MuiTableContainer-root {

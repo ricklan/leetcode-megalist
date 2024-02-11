@@ -13,10 +13,12 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import Tooltip from "@mui/material/Tooltip";
 import ReplayIcon from "@mui/icons-material/Replay";
+import SearchIcon from "@mui/icons-material/Search";
+import LockIcon from "@mui/icons-material/Lock";
 import CheckboxComponent from "./Checkbox";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import SearchIcon from "@mui/icons-material/Search";
 
 const darkTheme = createTheme({
   palette: {
@@ -88,6 +90,7 @@ let questions = [
     Blind75: true,
     Grind75: false,
     Neetcode150: true,
+    Premium: true,
   },
   {
     difficulty: "M",
@@ -712,6 +715,7 @@ let questions = [
     Blind75: false,
     Grind75: false,
     Neetcode150: true,
+    Premium: true,
   },
   {
     difficulty: "M",
@@ -752,6 +756,7 @@ let questions = [
     Blind75: true,
     Grind75: false,
     Neetcode150: true,
+    Premium: true,
   },
   {
     difficulty: "H",
@@ -800,6 +805,7 @@ let questions = [
     Blind75: true,
     Grind75: false,
     Neetcode150: true,
+    Premium: true,
   },
   {
     difficulty: "M",
@@ -1088,6 +1094,7 @@ let questions = [
     Blind75: true,
     Grind75: false,
     Neetcode150: true,
+    Premium: true,
   },
   {
     difficulty: "M",
@@ -1096,6 +1103,7 @@ let questions = [
     Blind75: true,
     Grind75: false,
     Neetcode150: true,
+    Premium: true,
   },
   {
     difficulty: "H",
@@ -1530,9 +1538,17 @@ function App() {
                 </FormControl>
               </Box>
 
-              <Button variant="contained" onClick={resetFilters}>
-                <ReplayIcon />
-              </Button>
+              <Tooltip
+                arrow
+                followCursor
+                title="Reset Filter and Search"
+                placement="right"
+                className="tooltip"
+              >
+                <Button variant="contained" onClick={resetFilters}>
+                  <ReplayIcon />
+                </Button>
+              </Tooltip>
             </div>
           </div>
         </div>
@@ -1558,14 +1574,26 @@ function App() {
                     <CheckboxComponent question={question.question} />
                   </TableCell>
                   <TableCell align="left">
-                    <a
-                      href={question.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="question-link"
-                    >
-                      {question.question}
-                    </a>
+                    <div className="question-row">
+                      <a
+                        href={question.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="question-link"
+                      >
+                        {question.question}
+                      </a>
+                      {question.Premium && (
+                        <Tooltip
+                          arrow
+                          followCursor
+                          title="Leetcode Premium Question"
+                          placement="right"
+                        >
+                          <LockIcon className="lock-icon" />{" "}
+                        </Tooltip>
+                      )}
+                    </div>
                   </TableCell>
                   <TableCell align="center">
                     <p
