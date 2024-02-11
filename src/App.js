@@ -13,12 +13,12 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Tooltip from "@mui/material/Tooltip";
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import ReplayIcon from "@mui/icons-material/Replay";
 import SearchIcon from "@mui/icons-material/Search";
 import LockIcon from "@mui/icons-material/Lock";
 import CheckboxComponent from "./Checkbox";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 
 const darkTheme = createTheme({
   palette: {
@@ -1391,6 +1391,14 @@ const difficultyMapping = {
   H: "Hard",
 };
 
+const LightTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    fontSize: theme.typography.pxToRem(18),
+  },
+}));
+
 function App() {
   const [list, setList] = useState("all");
   const [search, setSearch] = useState("");
@@ -1538,17 +1546,15 @@ function App() {
                 </FormControl>
               </Box>
 
-              <Tooltip
+              <LightTooltip
                 arrow
-                followCursor
                 title="Reset Filter and Search"
                 placement="right"
-                className="tooltip"
               >
                 <Button variant="contained" onClick={resetFilters}>
                   <ReplayIcon />
                 </Button>
-              </Tooltip>
+              </LightTooltip>
             </div>
           </div>
         </div>
@@ -1584,14 +1590,13 @@ function App() {
                         {question.question}
                       </a>
                       {question.Premium && (
-                        <Tooltip
+                        <LightTooltip
                           arrow
-                          followCursor
                           title="Leetcode Premium Question"
                           placement="right"
                         >
                           <LockIcon className="lock-icon" />{" "}
-                        </Tooltip>
+                        </LightTooltip>
                       )}
                     </div>
                   </TableCell>
