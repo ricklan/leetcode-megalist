@@ -50,7 +50,7 @@
 }
 
 .lock-icon {
-  color: #aa8017;
+  color: #c99a24;
   position: relative;
 }
 
@@ -64,21 +64,28 @@
 }
 
 .difficulty-tag {
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
+  /* color: white; */
+  color: #282c34;
+  font-size: 15px;
+  width: fit-content;
+  min-width: 132px;
+  margin: 0 auto;
+  padding: 5px 0px;
+  border-radius: 15px;
+  font-weight: 400;
 }
 
 .Easy {
-  color: #006400;
+  color: #6eebb7;
+  /* border: 1px solid #4fcf9a; */
 }
 
 .Medium {
-  color: #8B8000;
+  color: #2f93f9;
 }
 
 .Hard {
-  color: #cc0000;
+  color: #ba4cff;
 }
 
 @keyframes App-logo-spin {
@@ -105,6 +112,7 @@ h1 {
   text-align: center;
   color: white;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 500;
 }
 
 .filters-container {
@@ -179,4 +187,37 @@ tr th:nth-child(-n + 3)::after {
 
 .MuiTableContainer-root {
   overflow-x: inherit !important;
+}
+
+/*Mobile*/
+@media (max-width: 823px) {
+  .page {
+    margin: 0;
+  }
+  
+  .filters {
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 0;
+  }
+
+  .search {
+    align-items: center;
+    width: 95%;
+    margin: 0 0 20px 0;
+  }
+
+  .dropdown-container {
+    align-self: center;
+    width: 95%;
+    margin: 0 20px;
+  }
+  
+  .dropdown {
+    width: 90%;
+  }
+
+  th {
+    top: 175px;
+  }
 }

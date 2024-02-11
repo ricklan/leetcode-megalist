@@ -1395,7 +1395,12 @@ const LightTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
-    fontSize: theme.typography.pxToRem(18),
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: 300,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingRight: 10,
+    paddingLeft: 10,
   },
 }));
 
@@ -1488,7 +1493,7 @@ function App() {
               <SearchIcon className="search-icon" color="primary" />
               <TextField
                 id="outlined-basic"
-                label="Search Question"
+                label="Search"
                 variant="outlined"
                 margin="none"
                 size="small"
@@ -1549,7 +1554,7 @@ function App() {
               <LightTooltip
                 arrow
                 title="Reset Filter and Search"
-                placement="right"
+                placement="top"
               >
                 <Button variant="contained" onClick={resetFilters}>
                   <ReplayIcon />
