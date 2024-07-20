@@ -222,7 +222,7 @@ let questions = [
   },
   {
     difficulty: "M",
-    link: "https://leetcode.com/problems/min-stack/",
+    link: "https://leetcode.com/problems/daily-temperatures/",
     question: "Daily Temperatures",
     Blind75: false,
     Grind75: false,
