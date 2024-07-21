@@ -237,7 +237,7 @@ let questions = [
     Neetcode150: true,
   },
   {
-    difficulty: "M",
+    difficulty: "H",
     link: "https://leetcode.com/problems/largest-rectangle-in-histogram/",
     question: "Largest Rectangle In Histogram",
     Blind75: false,
